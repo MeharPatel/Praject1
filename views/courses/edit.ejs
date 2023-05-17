@@ -1,0 +1,45 @@
+<%- include('../header.ejs')  %>
+
+<h1 class="text-center mt-5">Edit Data</h1>
+
+<div class="container my-5 mx-5">
+    <table class="table table-bordered">
+        <div class="mb-5 col" style="width: 25%;">
+            
+        </div>
+        <div class="mb-5 col" style="width: 50%;">
+            <form action="/courseupdate/<%= edit._id %>" method="post">
+                <div class="mb-3">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" class="form-control" value="<%= edit.name %>">
+                </div>
+                <div class="mb-3">
+                  <label for="email">Email</label>
+                  <input type="text" name="email" class="form-control" value="<%= edit.email %>">
+                </div>
+                <div class="mb-3">
+                  <label for="phone">Phone no.</label>
+                  <input type="text" name="phone" class="form-control" value="<%= edit.phone %>">
+                </div>
+                <div class="mb-3">
+                  <label for="10thnum">10th number</label>
+                  <input type="text" name="tenth" class="form-control" value="<%= edit.tenth %>">
+                </div>
+                <div class="mb-3">
+                  <label for="12thnum">12th number</label>
+                  <input type="text" name="twelveth" class="form-control" value="<%= edit.twelveth %>">
+                </div>
+                <div class="mb-3">
+                  <label for="course">Course</label>
+                  <input type="text" name="course" class="form-control" value="B.Tech." readonly required>
+                </div>
+                <button type="submit">Update</button>
+              </form>
+        </div>
+        <div class="mb-5" style="width: 25%;">
+
+        </div>
+    </table>
+</div>
+
+<%- include('../footer.ejs')  %>

@@ -1,0 +1,21 @@
+<%- include('../header.ejs')  %>
+
+<div class="container mt-5 mb-5">
+    <table class="table table-bordered">
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone No.</th>
+    </tr>
+
+        <tr>
+            <td> <%= view._id %> </td>
+            <td> <%= view.name %> </td>
+            <td> <%= view.email %> </td>
+            <td> <%= view.phone %> </td>
+        </tr>
+    </table>
+</div>
+
+<%- include('../footer.ejs')  %>
