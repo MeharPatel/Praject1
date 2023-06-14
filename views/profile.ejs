@@ -1,0 +1,109 @@
+<%- include('./header.ejs') %>
+
+<script>
+    deactiveLink();
+    activeLink(3);
+    activeLink(5);
+  </script>
+<div class="container text-center mt-4 mb-5">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#cpass" class="btn btn-primary me-5">Change Password</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#uprofile" class="btn btn-primary me-5">Update Profile</button>
+    <button type="button" data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-danger">Delete My Account</button>
+</div>
+
+<!-- Change Password -->
+<div class="modal fade" id="cpass" tabindex="-1" aria-labelledby="cpass" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Change Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/changepassword" method="post">
+            <div class="mb-3">
+              <label for="oldpass">Old Password</label>
+              <input type="password" id="oldpass" name="oldpass" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="mb-3">
+              <label for="newpass">New Password</label>
+              <input type="password" id="newpass" name="newpass" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="mb-3">
+              <label for="conpass">Confirm Password</label>
+              <input type="password" id="conpass" name="conpass" class="form-control" autocomplete="off" required>
+            </div>
+            <div class="inp_show text-left">
+                <div class="show_box" style="display: inline;">
+                    <input type="checkbox" name="show" id="show" onclick="showpassword()"/>
+                </div>
+                <div class="show_label" style="display: inline;">
+                    <label for="show">Show Password</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Update Profile -->
+<div class="modal fade" id="uprofile" tabindex="-1" aria-labelledby="uprofile" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/updateprofile" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="name">Name</label>
+              <input type="text" name="name" value="<%= n %>" class="form-control" autocomplete="off" required readonly>
+            </div>
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input type="text" name="email" value="<%= e %>" class="form-control" autocomplete="off" required readonly>
+            </div>
+            <div class="mb-3">
+              <label for="phone">Profile Image</label>
+              <input type="file" name="image" class="form-control" autocomplete="off" required>
+                <img src="<%= i.url %>" alt="Image" width="100">
+            </div>
+            
+            <button type="submit" class="btn btn-info">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if(message1.length>0){ %>
+    <div class="alert alert-danger mx-5">
+        <%= message1 %>
+    </div>
+  <% } %>
+  
+  <% if(message2.length>0){ %>
+    <div class="alert alert-success">
+        <%= message2 %>
+    </div>
+  <% } %>
+
+  <script>
+    function showpassword() {
+        let showbox = document.getElementById("show");
+        if (showbox.checked == true){
+            document.getElementById("oldpass").type = "text";
+            document.getElementById("newpass").type = "text";
+            document.getElementById("conpass").type = "text";
+        } else {
+            document.getElementById("oldpass").type = "password";
+            document.getElementById("newpass").type = "password";
+            document.getElementById("conpass").type = "password";
+        }
+    }
+</script>
+
+<%- include('./footer.ejs') %>

@@ -5,6 +5,10 @@ const web = require('./routes/web')
 const connectdb = require('./db/connectdb')
 const fileUpload = require("express-fileupload")
 
+//cookie
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+
 //Temp file uploader 
 app.use(fileUpload({useTempFiles: true}))
 

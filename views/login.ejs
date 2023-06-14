@@ -12,26 +12,33 @@
 </head>
 <body class="container-fluid">
     <div class="container middle my-5">
-        <div class="image visible-md hidden-md"></div>
-        <div class="login">
-            <div class="logo text-center mt-4"><img src="images/logo4.jpg" alt="Logo"></div>
+        <div class="image"></div>
+        <form action="/verifylogin" method="post" class="login">
+            <div class="logo text-center mt-4">
+                <img src="images/logo4.jpg" alt="Logo">
+            </div>
             <div class="inp_text mt-4">
                 <p class="fs-2 text-center">Login</p>
             </div>
+            <% if(message.length>0){ %>
+                <div class="alert alert-danger ms-2">
+                    <%= message %>
+                </div>
+            <% } %>
             <div class="inp_email mt-3 text-center">
-                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email">
             </div>
             <div class="inp_pass mt-5 text-center">
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" placeholder="Password">
             </div>
             <div class="inp_btn mt-5 text-center">
-                <input type="button" value="Login">
+                <input type="submit" value="Login">
             </div>
             <div class="inp_text fs-6 mt-4 text-center">
                 Don't Have An Account?
                 <a href="reg">Register Now</a>
             </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>

@@ -25,6 +25,14 @@ const CourseSchema = new mongoose.Schema({
     course: {
         type: String,
         required: true
+    },
+    userid: {
+        type: String,
+        required: true
+    },
+    status: {
+        type: String,
+        default: 'pending',
     }
 },{timestamps: true})
 

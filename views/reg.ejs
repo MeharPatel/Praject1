@@ -13,7 +13,7 @@
 <body class="container-fluid">
     <div class="container middle my-5">
         <div class="image"></div>
-        <form action="/userinsert" method="post" enctype="multipart/from-data" class="reg">
+        <form action="/userinsert" method="post" enctype="multipart/form-data" class="reg">
             <div class="logo text-center mt-4"><img src="images/logo4.jpg" alt="Logo"></div>
             <div class="inp_text mt-2">
                 <p class="fs-2 text-center">Register Here</p>
@@ -30,14 +30,14 @@
                 <input type="email" name="email" id="email" placeholder="Email" required>
             </div>
             <div class="inp_pass mt-5 text-center">
-                <input type="password" name="password" id="password" placeholder="Password" required>
+                <input id="pass1" type="password" name="password" id="password" placeholder="Password" required>
             </div>
             <div class="inp_c_pass mt-5 text-center">
-                <input type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
+                <input id="pass2" type="password" name="c_password" id="c_password" placeholder="Confirm Password" required>
             </div>
             <div class="inp_show mt-4 ms-5 text-left">
                 <div class="show_box">
-                    <input type="checkbox" name="show" id="show">
+                    <input type="checkbox" name="show" id="show" onclick="showpassword()"/>
                 </div>
                 <div class="show_label">
                     <label for="show">Show Password</label>
@@ -45,7 +45,7 @@
             </div>
             <div class="inp_profile mt-2">
                 <div class="profile_label ms-5 text-left">
-                    <label for="profile">Profile Picture</label>
+                    <label for="image">Profile Picture</label>
                 </div>
                 <div class="profile_file text-center">
                     <input type="file" name="image" placeholder="Choose Profile">
@@ -56,9 +56,22 @@
             </div>
             <div class="inp_text fs-6 mt-4 text-center">
                 Already Have An Account?
-                <a href="login">Click To Login</a>
+                <a href="/">Click To Login</a>
             </div>
         </form>
     </div>
+
+    <script>
+        function showpassword() {
+            let showbox = document.getElementById("show");
+            if (showbox.checked == true){
+                document.getElementById("pass1").type = "text";
+                document.getElementById("pass2").type = "text";
+            } else {
+                document.getElementById("pass1").type = "password";
+                document.getElementById("pass2").type = "password";
+            }
+        }
+    </script>
 </body>
 </html>
