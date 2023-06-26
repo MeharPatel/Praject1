@@ -1,0 +1,25 @@
+<label class="switch">
+    <input type="checkbox" id="themebox" onclick="changetheme()">
+    <span class="slider round">
+      <ion-icon name="sunny" class="light"></ion-icon>
+      <ion-icon name="moon" class="dark"></ion-icon>
+    </span>
+  </label>
+
+  <script>
+    function changetheme(){
+      let theme = document.getElementById("themebox")
+      if(theme.checked == true){
+        let body = document.getElementsByTagName("body").classList.add("dark_theme")
+        const blue = document.getElementsByClassName("blue")
+        for (let i = 0; i < blue.length; i++) {
+          blue[i].classList.add("dark_theme")
+        }
+        let end = document.getElementsByClassName("end").classList.add("dark_theme_end")
+      } else {
+        let body = document.getElementsByTagName("body").classList.remove("dark_theme")
+        let blue = document.getElementsByClassName("blue").classList.remove("dark_theme_blue")
+        let end = document.getElementsByClassName("end").classList.remove("dark_theme_end")
+      }
+    }
+  </script>

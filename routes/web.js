@@ -31,5 +31,8 @@ route.post('/updateprofile', CheckUserAuth, frontController.updateprofile)
 
 //admin controller
 route.get('/admin/display', CheckUserAuth, adminController.display)
+route.get('/admin/course/view/:id', CheckUserAuth, adminController.courseview)
+route.get('/admin/course/delete', CheckUserAuth, adminController.coursedelete)
+route.post('/updatestatus/:id', CheckUserAuth, adminController.updatestatus)
 
 module.exports = route

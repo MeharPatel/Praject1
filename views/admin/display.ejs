@@ -1,5 +1,5 @@
-<%- include('../header.ejs')  %>
-admin display
+<%- include('./../header.ejs')  %>
+
 <div class="container mb-5 mt-5">
     <table class="table table-bordered">
         <tr>
@@ -8,6 +8,7 @@ admin display
             <th>Email</th>
             <th>Phone No.</th>
             <th>Status</th>
+            <th>Comment</th>
             <th>Action</th>
         </tr>
 
@@ -19,14 +20,15 @@ admin display
                 <td> <%= item.email %> </td>
                 <td> <%= item.phone %> </td>
                 <td> <%= item.status %> </td>
+                <td> <%= item.comment %> </td>
                 <td>
-                    <a href="/view/<%= item._id %>" class="btn btn-outline-info">view</a>
-                    <a href="/edit/<%= item._id %>" class="btn btn-outline-success">edit</a>
-                    <!-- <a href="/delete/<%= item._id %>" class="btn btn-outline-danger">delete</a> -->
+                    <a href="/admin/course/view/<%= item._id %>" class="btn btn-outline-info">view</a>
+                    <!-- <a href="/edit/<%= item._id %>" class="btn btn-outline-success">edit</a> -->
+                    <a href="/admin/course/delete/<%= item._id %>" class="btn btn-outline-danger">delete</a>
                 </td>
             </tr>
         <% }) %>
     </table>
 </div>
 
-<%- include('../footer.ejs')  %>
+<%- include('./../footer.ejs')  %>

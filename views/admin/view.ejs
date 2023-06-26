@@ -1,0 +1,41 @@
+<%- include('./../header.ejs')  %>
+
+<div class="container mt-5 mb-5">
+    <table class="table table-bordered">
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone No.</th>
+        <th>Tenth No.</th>
+        <th>Twelveth No.</th>
+        <th>Course</th>
+        <th>Comment</th>
+        <th></th>
+    </tr>
+
+        <tr>
+            <td> <%= d._id %> </td>
+            <td> <%= d.name %> </td>
+            <td> <%= d.email %> </td>
+            <td> <%= d.phone %> </td>
+            <td> <%= d.tenth %> </td>
+            <td> <%= d.twelveth %> </td>
+            <td> <%= d.course %> </td>
+            <td>
+                <form action="/updatestatus/<%= d._id %>" method="post">
+                    <textarea name="comment" id="comment" cols="3" rows="1"></textarea>
+                    <input type="hidden" name="email" value="<%= d.email %>">
+                    <input type="hidden" name="name" value="<%= d.name %>">
+                    <input type="hidden" name="course" value="<%= d.course %>">
+            </td>
+            <td>
+                <button type="submit" name="status" value="Approve" class="btn btn-success">Approve</button>
+                <button type="submit" name="status" value="reject" class="btn btn-danger">Reject</button>
+            </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<%- include('./../footer.ejs')  %>

@@ -33,7 +33,10 @@ const CourseSchema = new mongoose.Schema({
     status: {
         type: String,
         default: 'pending',
-    }
+    },
+    comment: {
+        type: String,
+    },
 },{timestamps: true})
 
 

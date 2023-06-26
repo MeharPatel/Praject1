@@ -29,8 +29,8 @@ class  frontController{
     }
     static contact = async(req, res)=>{
         try{
-            const {name, image, _id} = req.user
-            res.render("contact", {n:name,i:image})
+            const {name, image, email, _id} = req.user
+            res.render("contact", {n:name,i:image, e:email})
         }catch(error){
             console.log(error)
         }
@@ -110,11 +110,20 @@ class  frontController{
                 if(user != null){
                     const ismatched = await bcrypt.compare(password, user.password)
                     if(ismatched){
-                        //generate token
-                        const token = jwt.sign({id:user._id},'MeharPatel2512')
-                        // console.log(token)
-                        res.cookie('token', token)
-                        res.redirect('/home')
+                        if(user.role == 'User'){
+                            //generate token
+                            const token = jwt.sign({id:user._id},'MeharPatel2512')
+                            // console.log(token)
+                            res.cookie('token', token)
+                            res.redirect('/home')
+                        }
+                        if(user.role == 'Admin'){
+                            //generate token
+                            const token = jwt.sign({id:user._id},'MeharPatel2512')
+                            // console.log(token)
+                            res.cookie('token', token)
+                            res.redirect('/admin/display')
+                        }
                     }else{
                         req.flash('error','Email and Password are not valid!!')
                         res.redirect('/')

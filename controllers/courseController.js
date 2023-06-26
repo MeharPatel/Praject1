@@ -1,11 +1,13 @@
 const CourseModal = require('../models/Course')
+const nodemailer = require('nodemailer')
 
 
 class  courseController{
     
     static courseinsert = async(req, res)=>{
         try{
-            const {name, image, _id} = req.user
+            const {name, image, email, _id} = req.user
+            const course = req.body.course
             const data = new CourseModal({
                 name : req.body.name,
                 email : req.body.email,
@@ -16,6 +18,7 @@ class  courseController{
                 userid: _id,
             })
             await data.save()
+            this.SendEmail(course, email)
             res.redirect('/coursedisplay')
             
         }catch(error){
@@ -79,6 +82,33 @@ class  courseController{
             console.log(error)
         }
     }
+
+    static SendEmail = async (course, email) => {
+        
+        // console.log(course)
+        // console.log(email)
+        
+        let transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false, // true for 465, false for other ports
+            auth: {
+                user: 'meharpatel2512@gmail.com',
+                pass: 'ktbylytokueftsag'
+            },
+          });
+        
+          // send mail with defined transport object
+          let info = await transporter.sendMail({
+            from: '"meharpatel2512@gmail.com" <meharpatel2512@gmail.com>', // sender address
+            to: email, // list of receivers
+            subject: "Hello ✔", // Subject line
+            text: "Hello world?", // plain text body
+            html: `your course register successfully<b>${course}</b>`, // html body
+          });
+        
+    
+}
 
     
 }
