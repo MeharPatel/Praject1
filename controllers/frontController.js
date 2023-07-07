@@ -49,7 +49,7 @@ class  frontController{
             const btech = await CourseModal.findOne({userid: _id, course: 'B.Tech.'})
             const bca = await CourseModal.findOne({userid: _id, course: 'BCA'})
             const mca = await CourseModal.findOne({userid: _id, course: 'MCA'})
-            res.render("home", {n:name, e:email, i:image, b:btech, bca:bca, mca: mca})
+            res.render("home", {n:name, e:email, i:image, b:btech, bca:bca, mca: mca, id:_id})
         }catch(error){
             console.log(error)
         }
@@ -196,7 +196,9 @@ class  frontController{
             if(req.files){
                 const user = await UserModal.findById(req.user._id)
                 const image_id = user.image.public_id
-                await cloudinary.uploader.destroy(image_id)
+                if(image_id != "profileimage/default_user_lweli4.jpg"){
+                    await cloudinary.uploader.destroy(image_id)
+                }
                 const file = req.files.image
                 const myimage = await cloudinary.uploader.upload(file.tempFilePath, {
                     folder : "profileimage"

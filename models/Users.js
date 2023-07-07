@@ -17,11 +17,11 @@ const UserSchema = new mongoose.Schema({
     image: {
         public_id:{
             type: String,
-            required: true,
+            default: "profileimage/default_user_lweli4.jpg",
         },
         url:{
             type: String,
-            required: true,
+            default: "https://res.cloudinary.com/dk0yb5sm7/image/upload/v1687959648/profileimage/default_user_lweli4.jpg",
         },
     },
     role:{

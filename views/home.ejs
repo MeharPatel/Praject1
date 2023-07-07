@@ -48,21 +48,21 @@
     </button>
   </div>
 
-  <div class="container my-5">
+  <div class="container cards my-5">
     <p class="fs-1 text-center">Hello, <%= n %></p>
     <p class="fs-1 text-center">Register Your Course</p>
-    <p class="fs-5 text-center">Course Registration means the official recording of a student's name to study a course
+    <p class="fs-5 text-center text-wrap">Course Registration means the official recording of a student's name to study a course
       or courses.</p>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <div class="col">
-        <div class="card" style="width: 22rem; --clr:rgba(255, 0, 0, 0.5);">
+        <div class="card" style="--clr:rgba(255, 0, 0, 0.5);">
           <img src="/images/img1.jpg" class="card-img-top" alt="Picture">
           <div class="card-body text-center">
             <h5 class="card-title">B. Tech</h5>
             <p class="card-text">B.Tech is a professional undergraduate engineering degree.</p>
             <% if(b){ %>
-              <a href="/coursedisplay" class="btn btn-info">Display</a>
+              <a href="/coursedisplay/<%= id %>" class="btn btn-info">Display</a>
             <% }else { %>
               <a href="#" data-bs-toggle="modal" data-bs-target="#btech" class="btn btn-primary">Register</a>
             <% } %>
@@ -71,13 +71,13 @@
       </div>
 
       <div class="col">
-        <div class="card" style="width: 22rem; --clr:rgba(0, 255, 255, 0.5);">
+        <div class="card" style="--clr:rgba(0, 255, 255, 0.5);">
           <img src="/images/img2.jpg" class="card-img-top" alt="Picture">
           <div class="card-body text-center">
             <h5 class="card-title">BCA</h5>
             <p class="card-text">BCA is a three-year Bachelor's Degree in Computer Application.</p>
             <% if(bca){ %>
-              <a href="/coursedisplay" class="btn btn-info">Display</a>
+              <a href="/coursedisplay/<%= id %>" class="btn btn-info">Display</a>
             <% }else { %>
               <a href="#" data-bs-toggle="modal" data-bs-target="#bca" class="btn btn-primary">Register</a>
             <% } %>
@@ -86,13 +86,13 @@
       </div>
 
       <div class="col">
-        <div class="card" style="width: 22rem; --clr:rgba(251, 255, 0, 0.5);">
+        <div class="card" style="--clr:rgba(251, 255, 0, 0.5);">
           <img src="/images/img3.jpg" class="card-img-top" alt="Picture">
           <div class="card-body text-center">
             <h5 class="card-title">MCA</h5>
             <p class="card-text">MCA is a professional post-graduation degree in computer science.</p>
             <% if(mca){ %>
-              <a href="/coursedisplay" class="btn btn-info">Display</a>
+              <a href="/coursedisplay/<%= id %>" class="btn btn-info">Display</a>
             <% }else { %>
               <a href="#" data-bs-toggle="modal" data-bs-target="#mca" class="btn btn-primary">Register</a>
             <% } %>

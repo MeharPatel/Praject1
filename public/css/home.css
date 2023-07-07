@@ -12,10 +12,31 @@
 
 .carousel{
     height: 33em;
+    width: 100%;
 }
 
 .carousel .carousel-item img{
     height: 33em;
+}
+
+.cards{
+  margin-left: 1em;
+  width: 90%;
+}
+
+.card{
+  width: 100%;
+}
+
+.profile-btns{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-btns button{
+  margin-bottom: 0.5em;
 }
 
 .end{
@@ -31,6 +52,7 @@
   width: 80%;
   text-align: center;
   margin-top: 2em;
+  overflow-wrap: break-word;
 }
 
 .end-contact .text-inline p{
@@ -62,6 +84,15 @@
     border: 2% solid black;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.profile-btns{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.card{
+  width: 22em;
 }
 
 .profile img{

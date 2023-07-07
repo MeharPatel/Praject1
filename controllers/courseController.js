@@ -28,9 +28,10 @@ class  courseController{
 
     static display = async(req, res)=>{
         try{
-            const {name, image, _id} = req.user
-            const data = await CourseModal.find()
-            // console.log(data)
+            const {name, image, _id} = req.user 
+            const all = await CourseModal.find(req.params.userid)
+            const data = await CourseModal.find({userid: _id})
+            //console.log(data)
             res.render('courses/display', {d: data, n:name, i:image})
         }catch(error){
             console.log(error)

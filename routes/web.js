@@ -20,7 +20,7 @@ route.post('/verifylogin', frontController.verifylogin)
 
 //CourseController
 route.post('/courseinsert', CheckUserAuth, courseController.courseinsert)
-route.get('/coursedisplay', CheckUserAuth, courseController.display)
+route.get('/coursedisplay/:id', CheckUserAuth, courseController.display)
 route.get('/view/:id', CheckUserAuth, courseController.view)
 route.get('/edit/:id', CheckUserAuth, courseController.edit)
 route.post('/courseupdate/:id', CheckUserAuth, courseController.courseupdate)

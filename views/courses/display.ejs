@@ -8,6 +8,7 @@
             <th>Email</th>
             <th>Phone No.</th>
             <th>Status</th>
+            <th>Comment</th>
             <th>Action</th>
         </tr>
 
@@ -19,6 +20,7 @@
                 <td> <%= item.email %> </td>
                 <td> <%= item.phone %> </td>
                 <td> <%= item.status %> </td>
+                <td> <%= item.comment %> </td>
                 <td>
                     <a href="/view/<%= item._id %>" class="btn btn-outline-info">view</a>
                     <a href="/edit/<%= item._id %>" class="btn btn-outline-success">edit</a>
