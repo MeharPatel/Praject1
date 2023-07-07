@@ -25,7 +25,7 @@ class adminController{
     static coursedelete = async(req, res) => {
         try{
             const data = await courseController.findByIdAndDelete(req.params.id)
-            res.redirect('admin/courses/display')
+            res.redirect('/admin/display')
         }catch(error){
             console.log(error)
         }

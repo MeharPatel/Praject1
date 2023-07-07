@@ -32,7 +32,7 @@ class  courseController{
             const all = await CourseModal.find(req.params.userid)
             const data = await CourseModal.find({userid: _id})
             //console.log(data)
-            res.render('courses/display', {d: data, n:name, i:image})
+            res.render('/courses/display', {d: data, n:name, i:image})
         }catch(error){
             console.log(error)
         }
@@ -42,7 +42,7 @@ class  courseController{
         try{
             const {name, image, _id} = req.user
             const data = await CourseModal.findById(req.params.id)
-            res.render('courses/view', {view: data, n:name, i:image})
+            res.render('/courses/view', {view: data, n:name, i:image})
         }catch(error){
             console.log(error)
         }
@@ -52,7 +52,7 @@ class  courseController{
         try{
             const {name, image, _id} = req.user
             const data = await CourseModal.findById(req.params.id)
-            res.render('courses/edit', {edit: data, n:name, i:image})
+            res.render('/courses/edit', {edit: data, n:name, i:image})
         }catch(error){
             console.log(error)
         }
