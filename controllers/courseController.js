@@ -19,7 +19,7 @@ class  courseController{
             })
             await data.save()
             this.SendEmail(course, email)
-            res.redirect('/coursedisplay')
+            res.redirect('/home')
             
         }catch(error){
             console.log(error)
