@@ -97,6 +97,28 @@
       </div>
     </div>
   </div>
+<!-- Deleet Account -->
+<div class="modal fade" id="delete" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/delete" method="post">
+            <p class="fs-4" style="color: red;">
+              Are You Sure You Want To Delete Your Account?
+            </p>
+            <p class="fs-4" style="color: red;">
+              You May Lose Important Information!
+            </p>
+            <input type="submit" value="Delete My Account">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <% if(message1.length>0){ %>
     <div class="alert alert-danger mx-5">

@@ -67,10 +67,6 @@
 }
 
 @media screen and (min-width: 769px) {
-  .navbar ul{
-      margin-left: 35em;
-    }
-
   .navbar-brand img{
       height: 3.5em;
       margin-left: 2em;
@@ -89,6 +85,12 @@
 .profile-btns{
   margin-top: 1em;
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+.cards{
+  margin-left: auto;
 }
 
 .card{
