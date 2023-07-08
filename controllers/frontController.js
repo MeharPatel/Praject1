@@ -57,11 +57,8 @@ class  frontController{
 
     static userinsert = async(req, res)=>{
         // console.log(req.files.image)
-        const imagefile = req.files.image
-        const imageupload = await cloudinary.uploader.upload(imagefile.tempFilePath,{
-            folder : 'profileimage'
-        })
-        // console.log(imageupload)
+        
+            // console.log(imageupload)
         
         const {name, email, password, c_password} = req.body
         const user = await UserModal.findOne({email: email})
@@ -72,22 +69,42 @@ class  frontController{
         else{
             if(name && email && password && c_password){
                 if(password == c_password){
-                    try{
-                        const hashpassword = await bcrypt.hash(password, 10)
-                        //console.log(req.body)
-                        const result = new UserModal({
-                            name : name,
-                            email : email,
-                            password : hashpassword,
-                            image:{
-                                public_id: imageupload.public_id,
-                                url: imageupload.secure_url
-                            }
+                    if(req.files){
+                        const imagefile = req.files.image
+                        const imageupload = await cloudinary.uploader.upload(imagefile.tempFilePath,{
+                            folder : 'profileimage'
                         })
-                        await result.save()
-                        res.redirect('/')
-                    }catch(error){
-                        console.log(error)
+                        try{
+                            const hashpassword = await bcrypt.hash(password, 10)
+                            //console.log(req.body)
+                            const result = new UserModal({
+                                name : name,
+                                email : email,
+                                password : hashpassword,
+                                image:{
+                                    public_id: imageupload.public_id,
+                                    url: imageupload.secure_url
+                                }
+                            })
+                            await result.save()
+                            res.redirect('/')
+                        }catch(error){
+                            console.log(error)
+                        }
+                    } else {
+                        try{
+                            const hashpassword = await bcrypt.hash(password, 10)
+                            //console.log(req.body)
+                            const result = new UserModal({
+                                name : name,
+                                email : email,
+                                password : hashpassword,
+                            })
+                            await result.save()
+                            res.redirect('/')
+                        }catch(error){
+                            console.log(error)
+                        }
                     }
                 }
                 else{
@@ -214,6 +231,20 @@ class  frontController{
             }
             const update_profile = await UserModal.findByIdAndUpdate(req.user._id, data)
             res.redirect('/profile')
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    static deleteaccount = async(req, res)=>{
+        try{
+            const user = await UserModal.findById(req.user._id)
+            const image_id = user.image.public_id
+            if(image_id != "profileimage/default_user_lweli4.jpg"){
+                await cloudinary.uploader.destroy(image_id)
+            }
+            const userdelete = await UserModal.findByIdAndDelete(req.user._id)
+            res.redirect('/')
         }catch(error){
             console.log(error)
         }

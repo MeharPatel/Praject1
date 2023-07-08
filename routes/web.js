@@ -28,6 +28,7 @@ route.get('/delete/:id', CheckUserAuth, courseController.coursedelete)
 
 route.post('/changepassword', CheckUserAuth, frontController.changepassword)
 route.post('/updateprofile', CheckUserAuth, frontController.updateprofile)
+route.post('/deleteaccount', CheckUserAuth, frontController.deleteaccount)
 
 //admin controller
 route.get('/admin/display', CheckUserAuth, adminController.display)
